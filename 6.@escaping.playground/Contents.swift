@@ -41,8 +41,11 @@ class S {
             print(self?.foo ?? "nil")
         }
     }
+
 }
 
 S().method1()
 S().method2()
 S().method3() //nil S()局部变量被释放后 self = nil
+
+
