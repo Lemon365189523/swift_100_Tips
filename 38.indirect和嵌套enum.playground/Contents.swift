@@ -12,10 +12,10 @@ import UIKit
 
 //利用枚举实现单向连
 
-indirect enum LinkedList<Element: Comparable> {
-    case empty
-    case node(Element, LinkedList<Element>)
-}
+//indirect enum LinkedList<Element: Comparable> {
+//    case empty
+//    case node(Element, LinkedList<Element>)
+//}
 
 //class Node<T> {
 //    let value : T
