@@ -1,6 +1,6 @@
 import UIKit
 
-//定义：讲方法进行柯里化，就是把接受多个参数的方法进行一些变形，使其更加灵活
+//定义：将方法进行柯里化，就是把接受多个参数的方法进行一些变形，使其更加灵活
 
 //普通简单加1函数 但变化有限只能加1
 func addOne(num: Int) -> Int {
@@ -66,6 +66,7 @@ class MyViewController {
     let button = Control()
     
     func viewDidLoad() {
+        // MyViewController.onButtonTap 类型是 (MyViewController) -> () -> ()
         button.setTarget(target: self, action: MyViewController.onButtonTap, controlEvent: .TouchUpInside)
     }
     
@@ -81,3 +82,28 @@ class MyViewController {
 //柯里化是一种量产相似方法的好办法，可以通过柯里化一个方法模板来避免写重复代码。
 //思考： 实际开发中那些地方用到柯里化
 //https://www.jianshu.com/p/6eaacadafa1a
+//https://www.jianshu.com/p/5b27fec8c616
+//https://github.com/apple/swift-evolution/blob/master/proposals/0002-remove-currying.md
+
+/*
+ 应用场景
+    1.函数工厂
+ */
+
+
+func curried(x: Int) -> (Int) -> (Int){
+    return {y in
+        return x + y
+    }
+}
+
+func curried2(x: Int) -> (Int) -> (Int) -> Int{
+    return { y in
+        return { z in
+            return x * y / z
+        }
+    }
+}
+
+print(curried(x: 2)(2))
+print(curried2(x: 3)(4)(2))
